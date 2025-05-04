@@ -8,4 +8,12 @@ module.exports = {
     enable: true, // 开启插件
     package: 'egg-mongoose',
   },
+  validate: {
+    enable: true,
+    package: 'egg-validate',
+  },
+  multipart: {
+    enable: true,
+    package: 'egg-multipart',
+  },
 };

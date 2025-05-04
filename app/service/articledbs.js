@@ -10,5 +10,13 @@ class ArticleService extends Service {
     // 保存这个文档对象
     await article.save();
   }
+  // 获取文章的全部信息
+  async articleDetail(id) {
+    return this.article.findById(id);
+  }
+  // 修改文章
+  async editArticle(id, params) {
+    return this.ctx.model.User.updateOne({ _id: id }, params);
+  }
 }
 module.exports = ArticleService;
