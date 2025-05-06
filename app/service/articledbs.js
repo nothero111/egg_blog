@@ -11,6 +11,9 @@ class ArticleService extends Service {
     await article.save();
   }
   // 获取文章的全部信息
+  async getAllArticle() {
+    return this.article.find();
+  }
   async articleDetail(id) {
     return this.article.findById(id);
   }

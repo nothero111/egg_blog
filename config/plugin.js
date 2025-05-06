@@ -16,4 +16,9 @@ module.exports = {
     enable: true,
     package: 'egg-multipart',
   },
+  // 跨域问题
+  cors: {
+    enable: true,
+    package: 'egg-cors',
+  },
 };

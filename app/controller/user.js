@@ -16,7 +16,7 @@ class UserController extends Controller {
       email: { required: true, type: 'email' }, // 邮箱
       introduce: { type: 'string', required: false }, // 自我介绍
       level: { type: 'enum', values: [ 'normal' ], required: true }, // 用户权限
-    });
+    }, user);
     // 加密密码
     user.password = await service.user.encryptPassword(password);
     // 如果用户上传头像，则进行相应存储
@@ -44,16 +44,19 @@ class UserController extends Controller {
     if (!user) {
       this.ctx.throw(422, '用户不存在');
     }
-    // console.log(user.password,this.ctx.helper.md5(userBody.password))
-    if (user.password !== this.ctx.helper.md5(userBody.password)) {
+    if (!await this.service.user.verifyPassword(userBody.password, user.password)) { // 密码验证
       this.ctx.throw(422, '密码错误');
 
     }
+    // 生成token,返回给前端
     const token = this.service.user.createToken({ user });
     const userinfo = user._doc;
     delete userinfo.password;
     this.ctx.body = {
-      ...userinfo,
+      code: 0,
+      userinfo: {
+        ...userinfo,
+      },
       token,
     };
   }

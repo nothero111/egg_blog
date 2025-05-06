@@ -12,7 +12,7 @@ module.exports = () => { // 创建的一个捕捉错误的中间件
       // 说明是传递的参数有问题
       if (err.code === 'invalid_param') {
         message = err.errors[0].field + ' ' + err.errors[0].message;
-        status = 400;
+        status = 422;
       } else {
         // 如果没有传递参数的问题，则保持默认报错
         status = err.status || 500;
@@ -23,7 +23,7 @@ module.exports = () => { // 创建的一个捕捉错误的中间件
               : err.message;
       }
 
-      if (status === 400) {
+      if (status === 422) {
         ctx.body = {
           message,
         };

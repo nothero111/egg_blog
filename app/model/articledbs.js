@@ -8,7 +8,7 @@ module.exports = app => {
     content: { type: String, required: true }, // 内容
     date: { type: String, required: true }, // 时间
     cover: { type: String, required: true, default: 'img.png' }, // 封面
-    category: { type: String, required: true }, // 分类
+    category: { type: String, required: false, default: '其他' }, // 分类
   });
 
   return mongoose.model('Articledbs', ArticledbsSchema, 'articledbs');

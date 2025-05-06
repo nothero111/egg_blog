@@ -11,10 +11,12 @@
     "dayjs": "^1.11.13",
     "dompurify": "^3.2.5",
     "egg": "^3.17.5",
+    "egg-cors": "^3.0.1",
     "egg-mongoose": "^4.0.1",
     "egg-multipart": "^3.5.0",
     "egg-scripts": "2",
     "egg-validate": "^2.0.2",
+    "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "nodemailer": "^6.10.1"
   },

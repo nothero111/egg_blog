@@ -33,14 +33,17 @@ module.exports = appInfo => {
   };
   // EGG 安全配置
   config.security = {
+    // 关闭 csrf
     csrf: {
       enable: false,
     },
+    // 跨域白名单
+    domainWhiteList: [ 'http://localhost:7001' ],
   };
+  // 允许跨域的方法
   config.cors = {
     origin: '*',
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
-    credentials: true,
+    allowMethods: 'GET, PUT, POST, DELETE, PATCH',
   };
   config.mailer = {
     host: 'smtp.qq.com', // SMTP服务器地址
@@ -55,6 +58,12 @@ module.exports = appInfo => {
   config.middleware = [ 'errorHandler' ];
   config.multipart = {
     mode: 'file',
+  };
+  // 添加token配置，secret是加密的密钥，可以换一个uuid
+  // expiresIn是token有效时间
+  config.jwt = {
+    secret: '123456',
+    expiresIn: '2d',
   };
   // add your user config here
   const userConfig = {

@@ -1,3 +1,4 @@
+// 自动发送邮件
 const Controller = require('egg').Controller;
 
 class EmailController extends Controller {
